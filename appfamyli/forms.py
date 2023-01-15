@@ -1,9 +1,10 @@
 from django import forms
-from .models import Town, Team
+from .models import *
 
 class MyForm(forms.Form):
     f_town = forms.ModelChoiceField(queryset=Town.objects.all(), label='Города')
     f_team = forms.ModelChoiceField(queryset=Team.objects.none(), label='Бригады')
+    f_subteam = forms.ModelChoiceField(queryset=SubTeam.objects.none(), label='Подбригады')
     # parents = forms.ModelChoiceField(queryset=Parent.objects.all(), label='Фамилии')
     # children = forms.ModelChoiceField(queryset=Child.objects.none(), label='Члены семьи')
 

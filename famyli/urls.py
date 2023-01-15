@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     # path('parent-child/', parent_child_view, name='parent_child'),
     path('team/<int:town_id>/', views.team, name='team'),
+    path('subteam/<int:team_id>/', views.subteam, name='subteam'),
     path('admin/', admin.site.urls),
     path('view_in_browser/<int:parent_id>/', views.view_in_browser),
 

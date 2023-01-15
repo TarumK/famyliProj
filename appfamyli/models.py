@@ -11,7 +11,11 @@ class Town(models.Model):
 class Team(models.Model):
     name = models.CharField(max_length=100)
     parent = models.ForeignKey(Town, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
 
-
+class SubTeam(models.Model):
+    name = models.CharField(max_length=100)
+    parent = models.ForeignKey(Team, on_delete=models.CASCADE)
     def __str__(self):
         return self.name

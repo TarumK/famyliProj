@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import MyForm
-from .models import Team
+from .models import *
 
 
 # Create your views here.
@@ -18,6 +18,13 @@ def team(request, town_id):
     for team_el in teams:
         team_list.append({'id': team_el.id, 'name': team_el.name})
     return JsonResponse(team_list, safe=False)
+
+def subteam(request, team_id):
+    subteams = SubTeam.objects.filter(parent=team_id)
+    subteam_list = []
+    for subteam_el in subteams:
+        subteam_list.append({'id': subteam_el.id, 'name': subteam_el.name})
+    return JsonResponse(subteam_list, safe=False)
 
 def view_in_browser(request, parent_id):
     return HttpResponse(parent_id)

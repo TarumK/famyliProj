@@ -23,6 +23,7 @@
     <input type="submit" value="Сформировать">
 </form>
 
+<!-- Отслеживание DOM-объекта. Выбор элемента из раскрывающего списка Городов !-->
 <script>
     document.getElementById("id_f_town").addEventListener("change", function() {
         var townId = this.value;
@@ -40,6 +41,28 @@
             });
     });
 </script>
+
+
+<!-- Отслеживание DOM-объекта. Выбор элемента из раскрывающего списка БРИГАД
+ и отрисовка отфильтрованных значений подбригад!-->
+<script>
+    document.getElementById("id_f_team").addEventListener("change", function() {
+        var teamId = this.value;
+        var subteamSelect = document.getElementById("id_f_subteam");
+        subteamSelect.innerHTML = "";
+        fetch("/subteam/" + teamId + "/")
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(function(subteam_el) {
+                    var option = document.createElement("option");
+                    option.value = subteam_el.id;
+                    option.text = subteam_el.name;
+                    subteamSelect.add(option);
+                });
+            });
+    });
+</script>
+
 
 </body>
 </html>
