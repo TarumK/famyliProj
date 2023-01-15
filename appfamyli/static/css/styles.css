@@ -1,0 +1,9 @@
+body{ font-family: Verdana; font-size: medium;}
+h1{color:navy;}
+h2{color:blue;}
+img{width:350px;}
+input[type=select] {
+  padding:10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
