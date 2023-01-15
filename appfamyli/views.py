@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import MyForm
-from .models import Child
+from .models import Team
 
 
 # Create your views here.
@@ -12,12 +12,23 @@ def index(request):
     return render(request, 'index.html', {'form': one_form})
         # HttpResponse('<h1>Главная страница, сформированная через представление</h1>')
 
-def children(request, parent_id):
-    children = Child.objects.filter(parent=parent_id)
-    children_list = []
-    for child in children:
-        children_list.append({'id': child.id, 'name': child.name})
-    return JsonResponse(children_list, safe=False)
+def team(request, town_id):
+    teams = Team.objects.filter(parent=town_id)
+    team_list = []
+    for team_el in teams:
+        team_list.append({'id': team_el.id, 'name': team_el.name})
+    return JsonResponse(team_list, safe=False)
 
 def view_in_browser(request, parent_id):
     return HttpResponse(parent_id)
+
+
+def item1(request):
+    return render(request, 'item1.html')
+    # return HttpResponse('<h1>Пункт 1</h1>')
+
+def item2(request):
+    return HttpResponse('<h1>Пункт 2</h1>')
+
+def item3(request):
+    return HttpResponse('<h1>Пункт 3</h1>')

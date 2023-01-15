@@ -18,9 +18,13 @@ from django.urls import path
 from appfamyli import views
 
 urlpatterns = [
+    path('item1/', views.item1),
+    path('item2/', views.item2),
+    path('item3/', views.item3),
     path('', views.index, name='index'),
     # path('parent-child/', parent_child_view, name='parent_child'),
-    path('children/<int:parent_id>/', views.children, name='children'),
+    path('team/<int:town_id>/', views.team, name='team'),
     path('admin/', admin.site.urls),
     path('view_in_browser/<int:parent_id>/', views.view_in_browser),
+
 ]
